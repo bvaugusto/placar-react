@@ -15,7 +15,7 @@ const dados = {
     },
 
     visitante: {
-        nome: "Flamengo"
+        nome: "Cruzeiro"
     }
 }
 
@@ -24,14 +24,12 @@ export default class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Placar React</h1>
+            <div className="container">
+              <img src={logo} className="App-logo" alt="logo" />
+              <h1 className="App-title">Placar React</h1>
+            </div>
         </header>
-          <PlacarContainer
-              partida={dados.partida}
-              casa={dados.casa}
-              visitante={dados.visitante}
-          />
+          <PlacarContainer {...dados} tempo={92}/>
       </div>
     );
   }

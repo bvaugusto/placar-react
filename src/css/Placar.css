@@ -6,10 +6,35 @@
     position: relative;
 }
 
+.placar-inner {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.placar-inner .time {
+    width: 24%;
+}
+
+.placar-inner .partida {
+    width: 50%;
+}
+
 .flex-container{
     display: flex;
 }
 
 .flex-container .flex-item {
     flex: 1;
+}
+
+@media (max-width: 500px) {
+    .placar-inner {
+        flex-direction: column;
+    }
+
+    .placar-inner .time, .placar-inner .partida {
+        width: 100%;
+    }
+
 }

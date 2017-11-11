@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Time from '../time/Time'
 import Partida from '../partida/Partida'
 import '../../css/Placar.css'
+import PropTypes from 'prop-types';
 
 export default class PlacarContainer extends Component {
 
@@ -26,28 +27,30 @@ export default class PlacarContainer extends Component {
     }
 
     render(){
+
+        // Press operator, extração de dados
+        const {partida, casa, visitante} = this.props;
+
         return (
             <div className="container">
-                <div className="flex-container">
-                    <div>
+                <div className="placar-inner flex-container">
+                    <div className="time">
                         <h3>Casa</h3>
                         <Time
-                            nome={this.props.casa.nome}
+                            nome={casa.nome}
                             gols={this.state.gols_casa}
                             marcarGol={this.marcarGolCasa.bind(this)}
                         />
                     </div>
-                    <div>
-                        <Partida
-                            estadio={this.props.partida.estadio}
-                            data={this.props.partida.data}
-                            horario={this.props.partida.horario}
-                        />
+                    <div className="partida">
+                        <Partida {...partida}/>
+                        <div className="">{this.props.clima}</div>
+                        <div>{this.props.tempo}</div>
                     </div>
-                    <div>
+                    <div className="time">
                         <h3>Visitante</h3>
                         <Time
-                            nome={this.props.visitante.nome}
+                            nome={visitante.nome}
                             gols={this.state.gols_visitante}
                             marcarGol={this.marcarGolVisitante.bind(this)}
                         />
@@ -57,3 +60,13 @@ export default class PlacarContainer extends Component {
         );
     }
 }
+
+//Prop Types
+PlacarContainer.propTypes = {
+    clima: PropTypes.string,
+    tempo: PropTypes.number.isRequired
+};
+
+PlacarContainer.defaultProps = {
+  clima: 'Ensolarado'
+};
